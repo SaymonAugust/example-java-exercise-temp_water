@@ -1,0 +1,35 @@
+import java.util.Scanner;
+
+public class TemperaturaAgua {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        double temperatura;     // variável temporária para cada leitura
+        double soma = 0;        // acumulador da soma das temperaturas válidas
+        int contador = 0;       // conta quantas temperaturas válidas foram lidas
+
+        System.out.println("=== Medição de Temperaturas da Água - Paiva Ltda ===");
+
+        // Loop até termos 12 temperaturas válidas
+        while (contador < 12) {
+            System.out.print("Digite a temperatura #" + (contador + 1) + " (entre 4°C e 10°C): ");
+            temperatura = sc.nextDouble();
+
+            // Validação da temperatura
+            if (temperatura >= 4 && temperatura <= 10) {
+                soma += temperatura;   // acumula a soma
+                contador++;            // só incrementa se for válida
+            } else {
+                System.out.println("Temperatura inválida! Digite um valor entre 4°C e 10°C.");
+            }
+        }
+
+        // Cálculo da média
+        double media = soma / 12;
+
+        // Exibe o resultado
+        System.out.printf("\nA média das temperaturas medidas foi: %.2f°C\n", media);
+
+        sc.close();
+    }
+}
